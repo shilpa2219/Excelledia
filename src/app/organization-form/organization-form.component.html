@@ -1,0 +1,27 @@
+<div class="container">
+    <h2 class="title">{{id !== null ? 'Edit Organization' : 'Add Organization'}}</h2>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="row">
+        <div class="col-25">
+          <label for="title">Title <span class="text-danger">*</span></label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="title" name="title" placeholder="Enter title.." formControlName="title">
+          <div *ngIf="submitted && f['title'].invalid" class="err-msg">
+            <div  *ngIf="f['title'].errors && f['title'].errors['required']">This field is required</div>
+        </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="description">Description</label>
+        </div>
+        <div class="col-75">
+          <textarea id="description" name="description" placeholder="Write something.." formControlName="description"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <input type="submit" value="Save">
+      </div>
+    </form>
+  </div>

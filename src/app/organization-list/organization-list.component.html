@@ -1,0 +1,24 @@
+<div class="container">
+    <h2>Organizations</h2>
+    <div class="add-org">
+        <button class="button button-add" (click)="addOrganization()">Add</button>
+    </div>
+    <ul class="responsive-table">
+      <li class="table-header">
+        <div class="col col-1">Id</div>
+        <div class="col col-2">Title</div>
+        <div class="col col-3">Description</div>
+        <div class="col col-4">Action</div>
+      </li>
+      <li class="table-row" *ngFor="let org of organizationList | paginate: { itemsPerPage: 5, currentPage:p}">
+        <div class="col col-1">{{org?.id ? org?.id : '-'}}</div>
+        <div class="col col-2">{{org?.title ? org?.title : '-'}}</div>
+        <div class="col col-3">{{org?.description ? org?.description : '-'}}</div>
+        <div class="col col-4">
+            <button class="button button-edit" (click)="editOrganization(org?.id)">Edit</button>
+            <button class="button button-delete" (click)="deleteOrganization(org?.id)">Delete</button>
+        </div>
+      </li>
+    </ul>
+    <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>
+  </div>
